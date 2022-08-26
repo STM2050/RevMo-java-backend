@@ -67,6 +67,7 @@ public class UserService {
 
     public User getUserByEmail(String email) {
 
+
         return userDao.getUserByEmail(email);
 
     }
@@ -116,7 +117,6 @@ public class UserService {
 
                 //Send Token to Database
                 userDao.sendToken(jwtToken, currUser.getUserId());
-
                 Dotenv dotenv = Dotenv.load();
                 //Create URL and send email with reset URL
                 String frontendUrl = dotenv.get("FRONTEND_HOST");

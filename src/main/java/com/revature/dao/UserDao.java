@@ -93,7 +93,7 @@ public class UserDao {
             ps.setString(1, token);
             ps.setInt(2, userId);
             ResultSet rs = ps.executeQuery();
-            return true;
+            return rs.next();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -222,7 +222,7 @@ public class UserDao {
             ResultSet rs = ps.executeQuery();
             List<String> emails = new ArrayList<>();
             while (rs.next()) {
-                 emails.add(rs.getString("email"));
+                emails.add(rs.getString("email"));
             }
             return emails;
         } catch (SQLException e) {
