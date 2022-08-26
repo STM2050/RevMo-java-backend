@@ -18,6 +18,6 @@ public class Driver {
             controller.mapEndpoints(app);
         }
 
-        app.start(8080);
+        app.start(6060);
     }
 }
