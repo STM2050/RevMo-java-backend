@@ -60,9 +60,9 @@ public class UserServiceTest {
     @Test
     public void testGetUserByInputEmailPositive() throws Exception {
         UserDao mockUserDao = mock(UserDao.class);
-        String email = "mahwishubham@gmail.com";
+        String email = "testing123@gmail.com";
 
-        User user = new User(1, "John", "Doe", "mahwishubham@gmail.com", "Password123!", "555-555-5000", "1");
+        User user = new User(1, "John", "Doe", "testing123@gmail.com", "Password123!", "555-555-5000", "1");
         when(
                 mockUserDao.getUserByInputEmail(email)
         ).thenReturn(user);
@@ -76,7 +76,7 @@ public class UserServiceTest {
     @Test
     public void testGetUserByInputEmailNegative() throws Exception {
         UserDao mockUserDao = mock(UserDao.class);
-        String email = "mahwishubham@gmail.com";
+        String email = "testing123@gmail.com";
 
 //        User user = new User(1, "John", "Doe", "mahwishubham@gmail.com", "Password123!", "555-555-5000", "1");
         User user = null;
@@ -94,12 +94,12 @@ public class UserServiceTest {
     public void testSendTokenPositive() throws Exception {
         UserDao mockUserDao = mock(UserDao.class);
         int userId = 1;
-        String email = "mahwishubham@gmail.com";
+        String email = "testing123@gmail.com";
         String jwtToken = Jwts.builder()
-                .claim("last_name", "Shubham")
+                .claim("last_name", "Devon")
                 .claim("userId", 1)
                 .claim("email", email).
-                setSubject("Mahwish")
+                setSubject("Test")
                 .setId(UUID.randomUUID().toString())
                 .setIssuedAt(Date.from(Instant.now()))
                 .setExpiration(Date.from(Instant.now().plus(5L, ChronoUnit.MINUTES))).compact();
@@ -120,13 +120,13 @@ public class UserServiceTest {
     public void testForgetPasswordPositive() {
         UserDao mockUserDao = mock(UserDao.class);
         JSONObject inputEmail = new JSONObject();
-        inputEmail.put("email", "mazizi.c@gmail.com");
+        inputEmail.put("email", "test456@gmail.com");
 
         // mock getUserEmailByEmail dao function
         when(mockUserDao.getUserEmailByEmail(inputEmail.getString("email"))).thenReturn(true);
 
         // mock getUserByInputEmail dao function
-        User user = new User(1, "John", "Doe", "mazizi.c@gmail.com", "Password123!", "555-555-5000", "1");
+        User user = new User(1, "John", "Doe", "test456@gmail.com", "Password123!", "555-555-5000", "1");
         when(
                 mockUserDao.getUserByInputEmail(inputEmail.getString("email"))
         ).thenReturn(user);
